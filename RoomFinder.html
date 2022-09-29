@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UmiSQ Room Finder</title>
+</head>
+<style>
+    body{
+        padding-left: 5%;
+    }
+    .filter{
+        display: flex;
+        margin-bottom: 30px;
+    }
+    .position{background-color: green;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;}
+    .col{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .rooms{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .col > label{
+        display:inline-flex
+    }
+    #drops{
+        margin-left: 40px;
+    }
+    .details{
+        display: flex;
+        gap: 10px;        
+    }
+    .details p{
+        flex-grow: 3;
+    }
+
+</style>
+<script>
+
+</script>
+<body>
+    <h1>UniSQ Room Finder</h1>
+    <h2></h2>
+    <div class="filter">
+        <div class="col">
+            <input type="checkbox" name="Lecture" id="Lecture">
+            <input type="checkbox" name="Teaching" id="Teaching">
+            <input type="checkbox" name="Lab" id="Lab">
+            <input type="checkbox" name="Conf" id="Conf">
+            <input type="checkbox" name="Desks" id="Desks">          
+        </div>
+        <div class="col">
+            <label for="Lecture">Lecture Theatre</label>
+            <label for="Teaching">Teaching Space</label>
+            <label for="Lab">Computer Lab</label>
+            <label for="Conf">Conference Room</label>
+            <label for="Desks">Hot Desks</label>
+        </div>
+        <div class="col" id="drops">
+            <select name="Campus" id="Campus">
+                <option value="" disabled selected hidden>Campus</option>
+                <option value="sp">Springfield</option>
+                <option value="tw">Toowoomba</option>
+                <option value="ip">Ipswich</option>
+            </select>
+            <select name="Capacity" id="Capacity">
+                <option value="" disabled selected hidden>Capacity</option>
+                <option value="small">up to 10 people</option>
+                <option value="medium">up to 30 people</option>
+                <option value="large">more than 30 people</option>
+            </select>
+        </div>
+    </div>
+    <div class="rooms">
+        <div class="details">
+            <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DBCR0GwQtn1OTLjhY5akVCd3Dundefined"></iframe>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad quis numquam eligendi, autem eaque, quasi deleniti mollitia illum ipsum repellendus tempora voluptatum assumenda? Optio, ab dolorum. In obcaecati labore ipsum.</p>
+        </div>
+        <div class="details">
+
+        </div>
+    </div>
+    
+</body>
+</html>
