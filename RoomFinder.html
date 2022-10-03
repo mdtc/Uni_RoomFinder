@@ -113,17 +113,87 @@
     // }
 
     
+    // $(document).ready(function(){
+    //     $('.btn').on("click" ,function(){
+    //         var items = $(this).attr('name');
+    //         console.log(items);
+    //     $('.details').each(function(){
+    //         if(!$(this).hasClass(items)){
+    //           $(this).animate({"width" : "toggle"});  
+    //         }
+    //     });
+    //     });
+    //     $("#campus").change(function(){
+    //         var camp = $('option:selected', this).attr('value');
+    //         console.log(camp);
+    //         $('.details').each(function(){
+    //         if(!$(this).hasClass(camp)){
+    //           $(this).animate({"width" : "toggle"});  
+    //         }
+    //     });
+    //     });
+    // });
+
     $(document).ready(function(){
-        $('.btn').click(function(){
-            var items = $(this).attr('name');
-            console.log(items);
-        $('.details').each(function(){
-            if(!$(this).hasClass(items)){
-              $(this).animate({"width" : "toggle"});  
+        let items = [];
+        let noitems =[];
+
+        // $('.btn').on("click", function(){
+        //     var boxes = $('input[name=a]:checked');
+        //     var nothick = $("input[name=a]:not(checked)");
+        //     console.log(boxes);
+        //     console.log(nothick);
+        //     //console.log(nothick)
+        //     for(i=0; i < boxes.length; i++){
+        //         var cls = boxes[i].id;
+        //         if(!(items[i]=cls)){
+        //             items.push(cls);
+        //         }
+        //         console.log(items);
+        //     }
+
+
+        $('.btn').on("click", function(){
+            // $('.details').each(function(){
+            //     $(this).hide();
+            // });
+            if($(this).prop('checked')){
+                console.log("checked");
+                console.log(this.id);
+                var item = this.id;
+                $('.details').each(function(){
+                    if($(this).hasClass(item)){
+                        if(!$(this).is(':visible')){
+                            $(this).show();
+                        }
+                    }else if(!$(this).hasClass(item)){
+                        $(this).hide()   //check if statements here <--------------
+                    }
+                });
+            }else if($(this).prop('checked', false)){
+                console.log('unchecked');
             }
         });
+
+            function details(c){
+                $('.details').each(function(){
+                    if(!$(this).hasClass(c)){
+                        $(this).hide();
+                    }else{
+                        $(this).show();
+                    }
+                });   
+            }
+
         });
-    });
+
+        
+
+        // if($('.lecture').is(':checked')){
+        //     alert('checked')
+        // }
+
+    //});
 
 
 </script>
@@ -132,12 +202,12 @@
     <h2></h2>
     <div class="filter">
         <div class="col" class="filterContainer">
-            <input class="btn active" type="checkbox"  name="all" id="all">
-            <input class="btn" type="checkbox"  name="lecture" id="lecture">
-            <input class="btn" type="checkbox"  name="teaching" id="teaching">
-            <input class="btn" type="checkbox"  name="lab" id="lab">
-            <input class="btn" type="checkbox"  name="conf" id="lonf">
-            <input class="btn" type="checkbox"  name="desks" id="desks">          
+            <input class="btn active" type="checkbox"  name="a" id="all">
+            <input class="btn" type="checkbox"  name="a" id="lecture">
+            <input class="btn" type="checkbox"  name="a" id="teaching">
+            <input class="btn" type="checkbox"  name="a" id="lab">
+            <input class="btn" type="checkbox"  name="a" id="conf">
+            <input class="btn" type="checkbox"  name="a" id="desks">          
         </div>
         <div class="col">
             <label for="all">All rooms</label>
@@ -148,14 +218,13 @@
             <label for="desks">Hot Desks</label>
         </div>
         <div class="col" id="drops">
-            <select name="Campus" class="filterContainer">
+            <select name="Campus" id="campus" class="filterContainer">
                 <option class="btn" value="" disabled selected hidden>Campus</option>
-                <!-- <option value="ip" onclick="filterSelection('all')">all</option> -->
-                <option class="btn" value="sp" name="spf">Springfield</option>
+                <option class="btn" value="spf" name="spf">Springfield</option>
                 <option class="btn" value="tw" >Toowoomba</option>
                 <option class="btn" value="ip" >Ipswich</option>
             </select>
-            <select name="Capacity" class="filterContainer">
+            <select name="Capacity" id="capacity" class="filterContainer">
                 <option value="" disabled selected hidden>Capacity</option>
                 <option class="btn" value="small" >up to 10 people</option>
                 <option class="btn" value="medium" >up to 30 people</option>
@@ -164,7 +233,7 @@
         </div>
     </div>
     <div class="rooms">
-        <div class="details lecture">
+        <div class="details lecture tw" >
             <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DBCR0GwQtn1OTLjhY5akVCd3Dundefined"></iframe>
             <div>
                 <b>Room number: A111</b>
@@ -180,7 +249,7 @@
                 <a href="#">Go to room specifications</a>
             </div>
         </div>
-        <div class="details conf">
+        <div class="details conf spf">
             <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DBCR0GwQtn1OTLjhY5akVCd3Dundefined"></iframe>
             <div>
                 <b>Room number: X000</b>
@@ -196,12 +265,12 @@
                 <a href="#">Go to room specifications</a>
             </div>
         </div>
-        <div class="details lab">
+        <div class="details lab ip">
             <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DBCR0GwQtn1OTLjhY5akVCd3Dundefined"></iframe>
             <div>
                 <b>Room number: Z222</b>
                 <br>
-                <b>Location: Toowoomba</b>
+                <b>Location: Ipswich</b>
                 <br>
                 <b>Room type: Computer Lab</b>
                 <br>
