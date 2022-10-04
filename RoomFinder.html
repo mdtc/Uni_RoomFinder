@@ -157,17 +157,24 @@
             // $('.details').each(function(){
             //     $(this).hide();
             // });
+            var thicked = $('input[name=a]:checked');
+            console.log(thicked.length);
+            console.log(thicked);
+            if(thicked.length == 0){
+                console.log("all unchecked")
+                $('.details').show();
+            };
             if($(this).prop('checked')){
                 console.log("checked");
                 console.log(this.id);
                 var item = this.id;
+                var flag = $(this).data('changed', true);
+                console.log($(this).data('changed'));
                 $('.details').each(function(){
                     if($(this).hasClass(item)){
-                        if(!$(this).is(':visible')){
                             $(this).show();
-                        }
-                    }else if(!$(this).hasClass(item)){
-                        $(this).hide()   //check if statements here <--------------
+                    }else if($(this).data('changed', false)){
+                        $(this).hide() 
                     }
                 });
             }else if($(this).prop('checked', false)){
@@ -175,25 +182,12 @@
             }
         });
 
-            function details(c){
-                $('.details').each(function(){
-                    if(!$(this).hasClass(c)){
-                        $(this).hide();
-                    }else{
-                        $(this).show();
-                    }
-                });   
-            }
+
+
+
 
         });
 
-        
-
-        // if($('.lecture').is(':checked')){
-        //     alert('checked')
-        // }
-
-    //});
 
 
 </script>
