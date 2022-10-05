@@ -135,6 +135,7 @@
     // });
 
     $(document).ready(function(){
+        itemid = "";
         let items = [];
         let noitems =[];
 
@@ -160,14 +161,19 @@
             var thicked = $('input[name=a]:checked');
             console.log(thicked.length);
             console.log(thicked);
-            if(thicked.length == 0){
-                console.log("all unchecked")
-                $('.details').show();
-            };
+            // if(thicked.length == 0){
+            //     console.log("all unchecked")
+            //     $('.details').show();
+            // };
+            // if($("#all").prop("checked", true)){
+            //     console.log("all unchecked")
+            //     $('.details').show();
+            // };
             if($(this).prop('checked')){
                 console.log("checked");
                 console.log(this.id);
                 var item = this.id;
+                itemid = item;
                 var flag = $(this).data('changed', true);
                 console.log($(this).data('changed'));
                 $('.details').each(function(){
@@ -180,6 +186,38 @@
             }else if($(this).prop('checked', false)){
                 console.log('unchecked');
             }
+        });
+
+        $(".all").on("click", function(){
+
+            $(".details").show();
+
+
+        });
+
+        $("select[name=Campus]").change(function(){
+            var selectedCampus = $(this).children("option:selected").val();
+            if(selectedCampus == "tw"){
+                $('.details').each(function(){
+                    if($(this).hasClass("tw") && $(this).hasClass(itemid)){
+                        $(this).show()
+                    }else{
+                        $(this).hide()
+                    }
+                })
+                //$(".tw").show();
+                //$(".spf").hide();
+                //$(".ip").hide();
+            // } else if(selectedCampus == "spf"){
+            //     $(".spf").show();
+            //     $(".tw").hide();
+            //     $(".ip").hide();
+            // } else if(selectedCampus == "ip"){
+            //     $(".ip").show();
+            //     $(".spf").hide();
+            //     $(".tw").hide();
+            }
+
         });
 
 
@@ -196,12 +234,12 @@
     <h2></h2>
     <div class="filter">
         <div class="col" class="filterContainer">
-            <input class="btn active" type="checkbox"  name="a" id="all">
-            <input class="btn" type="checkbox"  name="a" id="lecture">
-            <input class="btn" type="checkbox"  name="a" id="teaching">
-            <input class="btn" type="checkbox"  name="a" id="lab">
-            <input class="btn" type="checkbox"  name="a" id="conf">
-            <input class="btn" type="checkbox"  name="a" id="desks">          
+            <input class="all" type="radio"  name="a" id="all">
+            <input class="btn" type="radio"  name="a" id="lecture">
+            <input class="btn" type="radio"  name="a" id="teaching">
+            <input class="btn" type="radio"  name="a" id="lab">
+            <input class="btn" type="radio"  name="a" id="conf">
+            <input class="btn" type="radio"  name="a" id="desks">          
         </div>
         <div class="col">
             <label for="all">All rooms</label>
@@ -213,16 +251,16 @@
         </div>
         <div class="col" id="drops">
             <select name="Campus" id="campus" class="filterContainer">
-                <option class="btn" value="" disabled selected hidden>Campus</option>
-                <option class="btn" value="spf" name="spf">Springfield</option>
-                <option class="btn" value="tw" >Toowoomba</option>
-                <option class="btn" value="ip" >Ipswich</option>
+                <option class="btn" value="all" disabled selected hidden name="campus">Campus</option>
+                <option class="btn" value="spf" name="campus">Springfield</option>
+                <option class="btn" value="tw"  name="campus">Toowoomba</option>
+                <option class="btn" value="ip" name="campus">Ipswich</option>
             </select>
             <select name="Capacity" id="capacity" class="filterContainer">
-                <option value="" disabled selected hidden>Capacity</option>
-                <option class="btn" value="small" >up to 10 people</option>
-                <option class="btn" value="medium" >up to 30 people</option>
-                <option class="btn" value="large" >more than 30 people</option>
+                <option value="" disabled selected hidden name="capacity">Capacity</option>
+                <option class="btn" value="small" name="capacity">up to 10 people</option>
+                <option class="btn" value="medium" name="capacity">up to 30 people</option>
+                <option class="btn" value="large" name="capacity">more than 30 people</option>
             </select>
         </div>
     </div>
