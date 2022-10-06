@@ -114,7 +114,36 @@
 
         $(".all").on("click", function(){
 
-            $(".details").show();
+            if((!selecCamp) || (!capacity)){
+                $(".details").show();
+            }else if(selecCamp){
+                $(".details").each(function(){
+                    if($(this).hasClass(selecCamp)){
+                        $(this).show();
+                    }else{
+                        $(this).hide();
+                    }
+                });
+
+            }else if(capacity){
+                $(".details").each(function(){
+                    if($(this).hasClass(capacity)){
+                        $(this).show();
+                    }else{
+                        $(this).hide();
+                    }
+                });
+            };
+            if((selecCamp) && (capacity)){
+                $(".details").each(function(){
+                    if(($(this).hasClass(selecCamp)) && ($(this).hasClass(capacity))){
+                        $(this).show();
+                    }else{
+                        $(this).hide()
+                    }
+                });
+            }
+
 
 
         });
@@ -187,7 +216,7 @@
     <h2></h2>
     <div class="filter">
         <div class="col" class="filterContainer">
-            <input class="all" type="radio"  name="a" id="all">
+            <input class="all" type="radio"  name="a" id="all" checked="checked">
             <input class="btn" type="radio"  name="a" id="lecture">
             <input class="btn" type="radio"  name="a" id="teaching">
             <input class="btn" type="radio"  name="a" id="lab">
