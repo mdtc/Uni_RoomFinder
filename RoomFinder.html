@@ -63,112 +63,21 @@
 
 </style>
 <script>
-    //Javascript 
-    // filterSelection("all");
-    // function filterSelection(c){
-    //     var x, i;
-    //     x = document.getElementsByClassName("details");
-    //     if (c == "all") c = "";
-    //     //Remove class "show"
-    //     for(i = 0; i < x.length; i++){
-    //         RemoveClass(x[i], "show");
-    //         if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show");
-    //     }
-    // }
-
-    // function AddClass(element, name) {
-    // var i, arr1, arr2;
-    // arr1 = element.className.split(" ");
-    // arr2 = name.split(" ");
-    // for (i = 0; i < arr2.length; i++) {
-    // if (arr1.indexOf(arr2[i]) == -1) {
-    //   element.className += " " + arr2[i];
-    //     }
-    //  }
-    // }
-
-    // function RemoveClass(element, name) {
-    // var i, arr1, arr2;
-    // arr1 = element.className.split(" ");
-    // arr2 = name.split(" ");
-    // for (i = 0; i < arr2.length; i++) {
-    //     while (arr1.indexOf(arr2[i]) > -1) {
-    //         arr1.splice(arr1.indexOf(arr2[i]), 1);
-    //      }
-    //     }
-    //     element.className = arr1.join(" ");
-    // }
-    
-    // // var btnContainer = document.getElementsByClassName("filterContainer");
-    // // var btns = btnContainer.getElementsByClassName("filterContainer");
-    // var btns = document.getElementsByClassName("filterContainer");
-    // for (var i = 0; i < btns.length; i++) {
-    //     "click change".split(" ").forEach(function(e){
-    //         btns[i].addEventListener(e, function() {
-    //         var current = document.getElementsByClassName("active");
-    //         current[0].className = current[0].className.replace(" active", "");
-    //         this.className += " active";
-    //         });    
-    //     });
-    // }
-
-    
-    // $(document).ready(function(){
-    //     $('.btn').on("click" ,function(){
-    //         var items = $(this).attr('name');
-    //         console.log(items);
-    //     $('.details').each(function(){
-    //         if(!$(this).hasClass(items)){
-    //           $(this).animate({"width" : "toggle"});  
-    //         }
-    //     });
-    //     });
-    //     $("#campus").change(function(){
-    //         var camp = $('option:selected', this).attr('value');
-    //         console.log(camp);
-    //         $('.details').each(function(){
-    //         if(!$(this).hasClass(camp)){
-    //           $(this).animate({"width" : "toggle"});  
-    //         }
-    //     });
-    //     });
-    // });
 
     $(document).ready(function(){
-        itemid = "";
+        var itemid = "";
+        var selecCamp;
+        var capacity;
+        var clicked = false;
         let items = [];
         let noitems =[];
 
-        // $('.btn').on("click", function(){
-        //     var boxes = $('input[name=a]:checked');
-        //     var nothick = $("input[name=a]:not(checked)");
-        //     console.log(boxes);
-        //     console.log(nothick);
-        //     //console.log(nothick)
-        //     for(i=0; i < boxes.length; i++){
-        //         var cls = boxes[i].id;
-        //         if(!(items[i]=cls)){
-        //             items.push(cls);
-        //         }
-        //         console.log(items);
-        //     }
-
 
         $('.btn').on("click", function(){
-            // $('.details').each(function(){
-            //     $(this).hide();
-            // });
+            clicked = true;
             var thicked = $('input[name=a]:checked');
             console.log(thicked.length);
             console.log(thicked);
-            // if(thicked.length == 0){
-            //     console.log("all unchecked")
-            //     $('.details').show();
-            // };
-            // if($("#all").prop("checked", true)){
-            //     console.log("all unchecked")
-            //     $('.details').show();
-            // };
             if($(this).prop('checked')){
                 console.log("checked");
                 console.log(this.id);
@@ -177,11 +86,26 @@
                 var flag = $(this).data('changed', true);
                 console.log($(this).data('changed'));
                 $('.details').each(function(){
-                    if($(this).hasClass(item)){
-                            $(this).show();
-                    }else if($(this).data('changed', false)){
+                    if(!selecCamp){
+                        console.log("campus empty")
+                        if($(this).hasClass(item)){
+                                $(this).show();
+                        }else if($(this).data('changed', false)){
                         $(this).hide() 
+                        }
+                    }else if(selecCamp.length > 1){
+                        if($(this).hasClass("details " + itemid +" "+ selecCamp)){
+                            $(this).show();
+                        }else{
+                            $(this).hide();
+                        }
+                    }else if(capacity.length > 0){
+
+                    }else{
+                        $(this).hide();
                     }
+                    
+                   
                 });
             }else if($(this).prop('checked', false)){
                 console.log('unchecked');
@@ -197,27 +121,56 @@
 
         $("select[name=Campus]").change(function(){
             var selectedCampus = $(this).children("option:selected").val();
-            if(selectedCampus == "tw"){
-                $('.details').each(function(){
-                    if($(this).hasClass("tw") && $(this).hasClass(itemid)){
-                        $(this).show()
+            selecCamp = selectedCampus;
+            console.log("capacity aquired"+ " "+ capacity)
+            $(".details").each(function(){
+                if(!itemid){
+                    if($(this).hasClass(selectedCampus)){
+                    $(this).show();
+                    }else{
+                    $(this).hide();
+                    }
+                }else if(itemid){
+                    if($(this).hasClass("details "+itemid+" "+selectedCampus)){
+                        $(this).show();
+                    }else{
+                        $(this).hide();
+                    }
+
+                }
+            });
+            if(capacity){
+                console.log("details "+itemid+" "+selectedCampus+" "+capacity)
+                $(".details").each(function(){
+                    if($(this).hasClass("details "+itemid+" "+selectedCampus+" "+capacity)){
+                        $(this).show();
+                    }else{
+                        $(this).hide();
+                    }
+                });
+            };
+
+        });
+
+        $("select[name=Capacity]").change(function(){
+            var selectedCapacity = $(this).children("option:selected").val();
+            capacity = selectedCapacity;
+            console.log(selectedCapacity);
+            $(".details").each(function(){
+                if(!itemid){
+                    if($(this).hasClass(capacity)){
+                    $(this).show();
+                    }else{
+                    $(this).hide();
+                    }
+                }else if(itemid){
+                    if(($(this).hasClass(itemid)) && ($(this).hasClass(capacity))){
+                        $(this).show();
                     }else{
                         $(this).hide()
                     }
-                })
-                //$(".tw").show();
-                //$(".spf").hide();
-                //$(".ip").hide();
-            // } else if(selectedCampus == "spf"){
-            //     $(".spf").show();
-            //     $(".tw").hide();
-            //     $(".ip").hide();
-            // } else if(selectedCampus == "ip"){
-            //     $(".ip").show();
-            //     $(".spf").hide();
-            //     $(".tw").hide();
-            }
-
+                }
+            });
         });
 
 
@@ -258,14 +211,14 @@
             </select>
             <select name="Capacity" id="capacity" class="filterContainer">
                 <option value="" disabled selected hidden name="capacity">Capacity</option>
-                <option class="btn" value="small" name="capacity">up to 10 people</option>
-                <option class="btn" value="medium" name="capacity">up to 30 people</option>
-                <option class="btn" value="large" name="capacity">more than 30 people</option>
+                <option class="btn" value="s" name="capacity">up to 10 people</option>
+                <option class="btn" value="m" name="capacity">up to 30 people</option>
+                <option class="btn" value="l" name="capacity">more than 30 people</option>
             </select>
         </div>
     </div>
     <div class="rooms">
-        <div class="details lecture tw" >
+        <div class="details lecture tw l" >
             <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DBCR0GwQtn1OTLjhY5akVCd3Dundefined"></iframe>
             <div>
                 <b>Room number: A111</b>
@@ -281,7 +234,39 @@
                 <a href="#">Go to room specifications</a>
             </div>
         </div>
-        <div class="details conf spf">
+        <div class="details lecture tw s" >
+            <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DBCR0GwQtn1OTLjhY5akVCd3Dundefined"></iframe>
+            <div>
+                <b>Room number: A111</b>
+                <br>
+                <b>Location: Toowoomba</b>
+                <br>
+                <b>Room type: Lecture Room</b>
+                <br>
+                <b>Capacity: 2 seats</b>
+                <br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, voluptate beatae</p>
+                <br>
+                <a href="#">Go to room specifications</a>
+            </div>
+        </div>
+        <div class="details lecture spf s" >
+            <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DBCR0GwQtn1OTLjhY5akVCd3Dundefined"></iframe>
+            <div>
+                <b>Room number: A111</b>
+                <br>
+                <b>Location: Springfield</b>
+                <br>
+                <b>Room type: Lecture Room</b>
+                <br>
+                <b>Capacity: 8 seats</b>
+                <br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, voluptate beatae</p>
+                <br>
+                <a href="#">Go to room specifications</a>
+            </div>
+        </div>
+        <div class="details conf spf m">
             <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DBCR0GwQtn1OTLjhY5akVCd3Dundefined"></iframe>
             <div>
                 <b>Room number: X000</b>
@@ -290,14 +275,30 @@
                 <br>
                 <b>Room type: Meeting Room</b>
                 <br>
-                <b>Capacity: 32 seats</b>
+                <b>Capacity: 15 seats</b>
                 <br>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, voluptate beatae</p>
                 <br>
                 <a href="#">Go to room specifications</a>
             </div>
         </div>
-        <div class="details lab ip">
+        <div class="details teaching spf s">
+            <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DBCR0GwQtn1OTLjhY5akVCd3Dundefined"></iframe>
+            <div>
+                <b>Room number: X000</b>
+                <br>
+                <b>Location: Springfield</b>
+                <br>
+                <b>Room type: Teaching Room</b>
+                <br>
+                <b>Capacity: 5 seats</b>
+                <br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, voluptate beatae</p>
+                <br>
+                <a href="#">Go to room specifications</a>
+            </div>
+        </div>
+        <div class="details lab ip l">
             <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DBCR0GwQtn1OTLjhY5akVCd3Dundefined"></iframe>
             <div>
                 <b>Room number: Z222</b>
@@ -307,6 +308,22 @@
                 <b>Room type: Computer Lab</b>
                 <br>
                 <b>Capacity: 32 seats</b>
+                <br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, voluptate beatae</p>
+                <br>
+                <a href="#">Go to room specifications</a>
+            </div>
+        </div>
+        <div class="details desks ip m">
+            <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DBCR0GwQtn1OTLjhY5akVCd3Dundefined"></iframe>
+            <div>
+                <b>Room number: Z222</b>
+                <br>
+                <b>Location: Ipswich</b>
+                <br>
+                <b>Room type: Hot Desk</b>
+                <br>
+                <b>Capacity: 12 seats</b>
                 <br>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, voluptate beatae</p>
                 <br>
