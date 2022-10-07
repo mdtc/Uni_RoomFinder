@@ -40,19 +40,30 @@
         display: flex;
         gap: 20px;
         padding-bottom: 30px;
-        /* display: none;         */
     }
     .details p{
-        padding-right: 25%;
+        padding-right: 15%;
+        word-wrap: break-word;
     }
     .details div{
         padding-right: 10px;
+        position: relative;
+    }
+    .details div img{
+        border-radius: 25px;
+        background-color: rgba(0, 0, 0, .4);
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        top: 5px;
+        right: 15px;
     }
     b{
         font-size:x-large;
     }
     p{
         font-size: large;
+        width: 500px;
     }
     a{
         font-size: large;
@@ -60,6 +71,18 @@
     .show{
         display: block;
     }
+    .NO_360{
+        width: 400px;
+        height: 267px;
+        background-color: rgba(0, 0, 0, .8);
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 267px;
+        word-wrap: break-word;
+
+    }
+
 
 </style>
 <script>
@@ -200,6 +223,15 @@
                     }
                 }
             });
+            if(selecCamp){
+                $(".details").each(function(){
+                    if($(this).hasClass(itemid) && $(this).hasClass(selecCamp) && $(this).hasClass(capacity)){
+                        $(this).show();
+                    }else{
+                        $(this).hide();
+                    }
+                });
+            }
         });
 
 
@@ -247,118 +279,409 @@
         </div>
     </div>
     <div class="rooms">
-        <div class="details lecture tw l" >
-            <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DBCR0GwQtn1OTLjhY5akVCd3Dundefined"></iframe>
+        <!-- Lecture Rooms -->
+        <div class="details lecture tw l" id="H102">
             <div>
-                <b>Room number: A111</b>
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DrWc8vKrwAJRZlz1hgvJ8LDoI.json"></iframe> -->
+                <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DrWc8vKrwAJRZlz1hgvJ8LDoI.json" width="400" height="267" type=""></object>
+                <img src="360.png" alt="">
+            </div>
+            <div>
+                <b>Room number: H102</b>
                 <br>
                 <b>Location: Toowoomba</b>
                 <br>
-                <b>Room type: Lecture Room</b>
+                <b>Room type: Lecture Theatre</b>
                 <br>
                 <b>Capacity: 32 seats</b>
                 <br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, voluptate beatae</p>
+                <p>H102 is the Allison Dickson Lecture Theatre and has a 390 seat capacity. It also outputs to the foyer area, and has a green room located stage left.</p>
                 <br>
-                <a href="#">Go to room specifications</a>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=77E5992D3A2442C4A5EF53C9AAA4BAB5">Go to room specifications</a>
             </div>
         </div>
-        <div class="details lecture tw s" >
-            <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DBCR0GwQtn1OTLjhY5akVCd3Dundefined"></iframe>
+        <div class="details lecture spf l" id="A401" >
             <div>
-                <b>Room number: A111</b>
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DHU42qDbyV9tV1xNutRAFNgYTundefined"></iframe> -->
+                <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DHU42qDbyV9tV1xNutRAFNgYTundefined" width="400" height="267" type=""></object>
+                <img src="360.png" alt="">
+            </div>
+            <div>
+                <b>Room number: A401</b>
+                <br>
+                <b>Location: Springfield</b>
+                <br>
+                <b>Room type: Lecture Theatre</b>
+                <br>
+                <b>Capacity: 170 seats</b>
+                <br>
+                <p>A401 is a 170 seat lecture theatre in Springfield and is suitable for Zoom video conferencing.</p>
+                <br>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=7557863196B64768B028A86DD7B97207">Go to room specifications</a>
+            </div>
+        </div>        
+        <div class="details lecture ip l" id="J131" >
+            <div>
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DscVEhGDJm4NXjnbGuHrE_jP6.jpg"></iframe> -->
+                <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DscVEhGDJm4NXjnbGuHrE_jP6.jpg" width="400" height="267" type=""></object>
+                <img src="360.png" alt="">
+            </div>
+            <div>
+                <b>Room number: J131</b>
+                <br>
+                <b>Location: Ipswich</b>
+                <br>
+                <b>Room type: Lecture Theatre</b>
+                <br>
+                <b>Capacity: 350 seats</b>
+                <br>
+                <p>J131 is the UniSQ Ipswich Auditorium with 350 seat capacity. </p>
+                <br>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=FBF057EE515C460F921E4870338F2B2C">Go to room specifications</a>
+            </div>
+        </div>
+        <div class="details lecture tw l" id="L206" >
+            <div>
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DXhPfSGwhGCd6eomy99iCgTdLundefined"></iframe> -->
+                <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DXhPfSGwhGCd6eomy99iCgTdLundefined" width="400" height="267" type=""></object>
+                <img src="360.png" alt="">
+            </div>
+            <div>
+                <b>Room number: L206</b>
                 <br>
                 <b>Location: Toowoomba</b>
                 <br>
-                <b>Room type: Lecture Room</b>
+                <b>Room type: Lecture Theatre</b>
                 <br>
-                <b>Capacity: 2 seats</b>
+                <b>Capacity: 191 seats</b>
                 <br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, voluptate beatae</p>
+                <p>L206 is a 191 seat capacity teaching space.</p>
                 <br>
-                <a href="#">Go to room specifications</a>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=4711E6E1F10044959C1C3F6CAC4FCE50">Go to room specifications</a>
             </div>
         </div>
-        <div class="details lecture spf s" >
-            <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DBCR0GwQtn1OTLjhY5akVCd3Dundefined"></iframe>
+        <div class="details lecture tw l" id="L209" >
             <div>
-                <b>Room number: A111</b>
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DoP1Be9DBAn-n_vA84B0nG8fCundefined"></iframe> -->
+                <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DoP1Be9DBAn-n_vA84B0nG8fCundefined" width="400" height="267" type=""></object>
+                <img src="360.png" alt="">
+            </div>
+            <div>
+                <b>Room number: L209</b>
+                <br>
+                <b>Location: Toowoomba</b>
+                <br>
+                <b>Room type: Lecture Theatre</b>
+                <br>
+                <b>Capacity: 191 seats</b>
+                <br>
+                <p>L209 is a 191 seat capacity teaching space.</p>
+                <br>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=F26C038053E34740B401361F148D6FDF">Go to room specifications</a>
+            </div>
+        </div>
+        <div class="details lecture spf l" id="A603" >
+            <div>
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DIAkfhr4qNVhohNQPfI9Tkv44.jpg"></iframe> -->
+                <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DIAkfhr4qNVhohNQPfI9Tkv44.jpg" width="400" height="267" type=""></object>
+                <img src="360.png" alt="">
+            </div>
+            <div>
+                <b>Room number: A603</b>
                 <br>
                 <b>Location: Springfield</b>
                 <br>
-                <b>Room type: Lecture Room</b>
+                <b>Room type: Lecture Theatre</b>
                 <br>
-                <b>Capacity: 8 seats</b>
+                <b>Capacity: 50 seats</b>
                 <br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, voluptate beatae</p>
+                <p>A603 is a Lecture Theatre with 50 seat capacity.</p>
                 <br>
-                <a href="#">Go to room specifications</a>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=6FADF8E1D1FF4C0BB224C3BFEE4E4034">Go to room specifications</a>
             </div>
         </div>
-        <div class="details conf spf m">
-            <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DBCR0GwQtn1OTLjhY5akVCd3Dundefined"></iframe>
+        <div class="details lecture spf l" id="D101" >
             <div>
-                <b>Room number: X000</b>
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3D2pTXjVYvw9mqzXfbH6sZLS9M.jpg"></iframe> -->
+                <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3D2pTXjVYvw9mqzXfbH6sZLS9M.jpg" width="400" height="267" type=""></object>
+                <img src="360.png" alt="">
+            </div>
+            <div>
+                <b>Room number: D101</b>
                 <br>
                 <b>Location: Springfield</b>
                 <br>
-                <b>Room type: Meeting Room</b>
+                <b>Room type: Auditorium</b>
                 <br>
-                <b>Capacity: 15 seats</b>
+                <b>Capacity: 350 seats</b>
                 <br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, voluptate beatae</p>
+                <p>D101 is the Springfield Auditorium and has a 350 seat capacity, with many AV equipment options.</p>
                 <br>
-                <a href="#">Go to room specifications</a>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=CDBBD2A43CA444CEA8CBA88D679F29DE">Go to room specifications</a>
             </div>
         </div>
-        <div class="details teaching spf s">
-            <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DBCR0GwQtn1OTLjhY5akVCd3Dundefined"></iframe>
+        <div class="details lecture ip l" id="O202" >
             <div>
-                <b>Room number: X000</b>
-                <br>
-                <b>Location: Springfield</b>
-                <br>
-                <b>Room type: Teaching Room</b>
-                <br>
-                <b>Capacity: 5 seats</b>
-                <br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, voluptate beatae</p>
-                <br>
-                <a href="#">Go to room specifications</a>
+                <div class="NO_360">ICT Training will update this picture as soon as possible</div>
+                <!-- <img src="360.png" alt=""> -->
             </div>
-        </div>
-        <div class="details lab ip l">
-            <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DBCR0GwQtn1OTLjhY5akVCd3Dundefined"></iframe>
             <div>
-                <b>Room number: Z222</b>
+                <b>Room number: O202</b>
                 <br>
                 <b>Location: Ipswich</b>
+                <br>
+                <b>Room type: Lecture Theatre</b>
+                <br>
+                <b>Capacity: 100 seats</b>
+                <br>
+                <p>O202 is lecture theatre with 100 seat capacity.</p>
+                <br>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=97CAD60E9A11439C9E0695A5C32FE135">Go to room specifications</a>
+            </div>
+        </div>
+
+
+
+
+
+      <!-- Teaching Spaces -->
+        <div class="details teaching tw m" id="D109">
+            <div>
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3D8MK0p3evSczOyiio2oPtnOfN.json"></iframe> -->
+                <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3D8MK0p3evSczOyiio2oPtnOfN.json" width="400" height="267" type=""></object>
+                <img src="360.png" alt="">
+            </div>
+            <div>
+                <b>Room number: D109</b>
+                <br>
+                <b>Location: Toowoomba</b>
+                <br>
+                <b>Room type: Teaching Space</b>
+                <br>
+                <b>Capacity: 30 seats</b>
+                <br>
+                <p>D109 is a tutorial room with 30 seat capacity. It has many AV equipment options.</p>
+                <br>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=03D03EB608A04501A8EF8D904B6A802F">Go to room specifications</a>
+            </div>
+        </div>
+        <div class="details teaching tw l" id="G314A">
+            <div>
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DE7rde0lcvV9z_h0JenzVGaxIundefined"></iframe> -->
+                <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DE7rde0lcvV9z_h0JenzVGaxIundefined" width="400" height="267" type=""></object>
+                <img src="360.png" alt="">
+            </div>
+            <div>
+                <b>Room number: G314A</b>
+                <br>
+                <b>Location: Toowoomba</b>
+                <br>
+                <b>Room type: Teaching Space</b>
+                <br>
+                <b>Capacity: 32 seats</b>
+                <br>
+                <p>This room can be connected to G314B (by opening room divider) and the AV can be shared between both rooms.  To use both rooms, please ensure you book both rooms..</p>
+                <br>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=F3385F0434F54935A7CE96D0CC37571C">Go to room specifications</a>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <!-- Computer Labs -->
+        <div class="details lab tw m" id="K301A">
+            <div>
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DI-SEC40Dzn2sbALams74eMkOundefined"></iframe> -->
+                <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DI-SEC40Dzn2sbALams74eMkOundefined" width="400" height="267" type=""></object>
+                <img src="360.png" alt="">
+            </div>
+            <div>
+                <b>Room number: K301A</b>
+                <br>
+                <b>Location: Toowoomba</b>
                 <br>
                 <b>Room type: Computer Lab</b>
                 <br>
-                <b>Capacity: 32 seats</b>
+                <b>Capacity: 18 seats</b>
                 <br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, voluptate beatae</p>
+                <p>K301A is a 18 seat capacity Windows computer space. It has no AV equipment installed.</p>
                 <br>
-                <a href="#">Go to room specifications</a>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=7599E55D746A483085F4F47BDD0DEEC7">Go to room specifications</a>
             </div>
         </div>
-        <div class="details desks ip m">
-            <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DBCR0GwQtn1OTLjhY5akVCd3Dundefined"></iframe>
+        <div class="details lab tw m" id="L109">
             <div>
-                <b>Room number: Z222</b>
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3D00itgjUTiya2olKPWt8lQi6K"></iframe> -->
+                <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3D00itgjUTiya2olKPWt8lQi6K" width="400" height="267" type=""></object>
+                <img src="360.png" alt="">
+            </div>
+            <div>
+                <b>Room number: L109</b>
+                <br>
+                <b>Location: Toowoomba</b>
+                <br>
+                <b>Room type: Computer Lab</b>
+                <br>
+                <b>Capacity: 24 seats</b>
+                <br>
+                <p>L109 is a Windows computer lab with 24 seats. It is primarily used by Senior Information Systems students.</p>
+                <br>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=A9983633E9CD4F07AE2EEB26FEBB826C">Go to room specifications</a>
+            </div>
+        </div>
+        <div class="details lab tw m" id="L110">
+            <div>
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DbPkPtBs38WLm9QNUaZGALO8F"></iframe> -->
+                <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DbPkPtBs38WLm9QNUaZGALO8F" width="400" height="267" type=""></object>
+                <img src="360.png" alt="">
+            </div>
+            <div>
+                <b>Room number: L110</b>
+                <br>
+                <b>Location: Toowoomba</b>
+                <br>
+                <b>Room type: Computer Lab</b>
+                <br>
+                <b>Capacity: 23 seats</b>
+                <br>
+                <p>110 is a Windows computer lab with 23 seats. It is primarily used by Finance Trading students.</p>
+                <br>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=0B205592F01A4EBE865997B779BA95C9">Go to room specifications</a>
+            </div>
+        </div>
+        <div class="details lab tw m" id="W426">
+            <div>
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3Di67nFxzmdAqF07D9DBYpUWhv.json"></iframe> -->
+                <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3Di67nFxzmdAqF07D9DBYpUWhv.json" width="400" height="267" type=""></object>
+                <img src="360.png" alt="">
+            </div>
+            <div>
+                <b>Room number: W426</b>
+                <br>
+                <b>Location: Toowoomba</b>
+                <br>
+                <b>Room type: Computer Lab</b>
+                <br>
+                <b>Capacity: 24 seats</b>
+                <br>
+                <p>W426 is a Windows computer lab with a 24 seat capacity and is NOT suitable equipped for Zoom video conferences.</p>
+                <br>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=A090C1CABBAF427AB451267EE27D765E">Go to room specifications</a>
+            </div>
+        </div>
+        <div class="details lab spf m" id="A106">
+            <div>
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DHSEqXku6UDkDQu6ni-SHByRV.jpg"></iframe> -->
+                <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DHSEqXku6UDkDQu6ni-SHByRV.jpg" width="400" height="267" type=""></object>
+                <img src="360.png" alt="">
+            </div>
+            <div>
+                <b>Room number: A106</b>
+                <br>
+                <b>Location: Springfield</b>
+                <br>
+                <b>Room type: Computer Lab</b>
+                <br>
+                <b>Capacity: 25 seats</b>
+                <br>
+                <p>A106 is a Windows computer lab with a 25 seat capacity and is NOT suitable equipped for Zoom video conferences.</p>
+                <br>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=32045698D1EE4C9F933EC9152520B3A0">Go to room specifications</a>
+            </div>
+        </div>
+        
+
+
+
+
+        <!-- Meeting Spaces -->
+        <div class="details conf ip m" id="H321">
+            <div>
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DP1LaJLKZobiauy3S_NYIYP-A.jpg"></iframe> -->
+                <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DP1LaJLKZobiauy3S_NYIYP-A.jpg" width="400" height="267" type=""></object>
+                <img src="360.png" alt="">
+            </div>
+            <div>
+                <b>Room number: H321</b>
                 <br>
                 <b>Location: Ipswich</b>
                 <br>
-                <b>Room type: Hot Desk</b>
+                <b>Room type: Meeting Room</b>
+                <br>
+                <b>Capacity: 14 seats</b>
+                <br>
+                <p>H321 is a Zoom meeting room with 14 seat capacity.</p>
+                <br>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=C19A900847BF4B21A4B01CEBBCCDB808">Go to room specifications</a>
+            </div>
+        </div>
+        <div class="details conf ip m" id="H301">
+            <div>
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DEsoCOGGCXjcd4snYtSN5uUW4undefined"></iframe> -->
+                <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DEsoCOGGCXjcd4snYtSN5uUW4undefined" width="400" height="267" type=""></object>
+                <img src="360.png" alt="">
+            </div>
+            <div>
+                <b>Room number: H301</b>
+                <br>
+                <b>Location: Ipswich</b>
+                <br>
+                <b>Room type: Boardroom</b>
+                <br>
+                <b>Capacity: 16 seats</b>
+                <br>
+                <p>This room is used for formal occasions, and is reserved for University executive meetings and official business.</p>
+                <br>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=C85EE8E948114E29A07BA231A157E24B">Go to room specifications</a>
+            </div>
+        </div>
+        <div class="details conf ip m" id="I330">
+            <div>
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DJTn2Vs4eeumSwrh9fHtUFVDt.jpg"></iframe> -->
+                <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DJTn2Vs4eeumSwrh9fHtUFVDt.jpg" width="400" height="267" type=""></object>
+                <img src="360.png" alt="">
+            </div>
+            <div>
+                <b>Room number: I330</b>
+                <br>
+                <b>Location: Ipswich</b>
+                <br>
+                <b>Room type: Meeting Room</b>
                 <br>
                 <b>Capacity: 12 seats</b>
                 <br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, voluptate beatae</p>
+                <p>H321 is a Zoom meeting room with 12 seat capacity.</p>
                 <br>
-                <a href="#">Go to room specifications</a>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=579B64D54A26409F9CF9A750FD7F354F">Go to room specifications</a>
             </div>
         </div>
+        <div class="details conf ip m" id="I402">
+            <div>
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3D5Ys5_EZIhAFRM9PsXg_aaYoA.jpg"></iframe> -->
+                <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3D5Ys5_EZIhAFRM9PsXg_aaYoA.jpg" width="400" height="267" type=""></object>
+                <img src="360.png" alt="">
+            </div>
+            <div>
+                <b>Room number: I402</b>
+                <br>
+                <b>Location: Ipswich</b>
+                <br>
+                <b>Room type: Meeting Room</b>
+                <br>
+                <b>Capacity: 10 seats</b>
+                <br>
+                <p>I402 is a Zoom meeting room with 10 seat capacity. This room uses Cisco equipment.</p>
+                <br>
+                <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=3AF166A2CDB742428D03101DC5BCCD68">Go to room specifications</a>
+            </div>
+        </div>
+    
+       
+        
     </div>
     
 </body>
