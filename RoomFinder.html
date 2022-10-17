@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <title>UmiSQ Room Finder</title>
+    <title>UniSQ Room Finder</title>
 </head>
+
+<!-- Starting Inline CSS style -->
 <style>
     body{
         padding-left: 5%;
@@ -85,6 +87,9 @@
 
 
 </style>
+
+<!-- Starting JQuery scrip -->
+
 <script>
 
     $(document).ready(function(){
@@ -95,22 +100,22 @@
         let items = [];
         let noitems =[];
 
-
+        // Filter Select > radio options logic starts here  
         $('.btn').on("click", function(){
             clicked = true;
             var thicked = $('input[name=a]:checked');
-            console.log(thicked.length);
-            console.log(thicked);
+            //console.log(thicked.length);
+            //console.log(thicked);
             if($(this).prop('checked')){
-                console.log("checked");
-                console.log(this.id);
+                //console.log("checked");
+                //console.log(this.id);
                 var item = this.id;
                 itemid = item;
                 var flag = $(this).data('changed', true);
-                console.log($(this).data('changed'));
+                //console.log($(this).data('changed'));
                 $('.details').each(function(){
                     if(!selecCamp){
-                        console.log("campus empty")
+                        //console.log("campus empty")
                         if($(this).hasClass(item)){
                                 $(this).show();
                         }else if($(this).data('changed', false)){
@@ -131,10 +136,12 @@
                    
                 });
             }else if($(this).prop('checked', false)){
-                console.log('unchecked');
+                //onsole.log('unchecked');
             }
         });
 
+
+        // Show all rooms logic starts here
         $(".all").on("click", function(){
 
             if((!selecCamp) || (!capacity)){
@@ -166,15 +173,16 @@
                     }
                 });
             }
-
-
-
         });
 
+
+
+
+        // DropDown Campus Logic starts here
         $("select[name=Campus]").change(function(){
             var selectedCampus = $(this).children("option:selected").val();
             selecCamp = selectedCampus;
-            console.log("capacity aquired"+ " "+ capacity)
+            //console.log("capacity aquired"+ " "+ capacity)
             $(".details").each(function(){
                 if(!itemid){
                     if($(this).hasClass(selectedCampus)){
@@ -183,7 +191,7 @@
                     $(this).hide();
                     }
                 }else if(itemid){
-                    if($(this).hasClass("details "+itemid+" "+selectedCampus)){
+                    if(($(this).hasClass(itemid)) && ($(this).hasClass(selectedCampus))){
                         $(this).show();
                     }else{
                         $(this).hide();
@@ -192,9 +200,9 @@
                 }
             });
             if(capacity){
-                console.log("details "+itemid+" "+selectedCampus+" "+capacity)
+                //console.log("details "+itemid+" "+selectedCampus+" "+capacity)
                 $(".details").each(function(){
-                    if($(this).hasClass("details "+itemid+" "+selectedCampus+" "+capacity)){
+                    if(($(this).hasClass(itemid)) && ($(this).hasClass(selectedCampus)) && ($(this).hasClass(capacity))){
                         $(this).show();
                     }else{
                         $(this).hide();
@@ -204,10 +212,15 @@
 
         });
 
+
+
+        
+
+        // DropDown Capacity Logic starts here
         $("select[name=Capacity]").change(function(){
             var selectedCapacity = $(this).children("option:selected").val();
             capacity = selectedCapacity;
-            console.log(selectedCapacity);
+            //console.log(selectedCapacity);
             $(".details").each(function(){
                 if(!itemid){
                     if($(this).hasClass(capacity)){
@@ -225,7 +238,7 @@
             });
             if(selecCamp){
                 $(".details").each(function(){
-                    if($(this).hasClass(itemid) && $(this).hasClass(selecCamp) && $(this).hasClass(capacity)){
+                    if(($(this).hasClass(itemid)) && ($(this).hasClass(selecCamp)) && ($(this).hasClass(capacity))){
                         $(this).show();
                     }else{
                         $(this).hide();
@@ -233,10 +246,6 @@
                 });
             }
         });
-
-
-
-
 
         });
 
@@ -320,9 +329,9 @@
                 <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=7557863196B64768B028A86DD7B97207">Go to room specifications</a>
             </div>
         </div>        
-        <div class="details lecture ip l" id="J131" >
+        <!-- <div class="details lecture ip l" id="J131" >
             <div>
-                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DscVEhGDJm4NXjnbGuHrE_jP6.jpg"></iframe> -->
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DscVEhGDJm4NXjnbGuHrE_jP6.jpg"></iframe>
                 <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DscVEhGDJm4NXjnbGuHrE_jP6.jpg" width="400" height="267" type=""></object>
                 <img src="360.png" alt="">
             </div>
@@ -339,7 +348,7 @@
                 <br>
                 <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=FBF057EE515C460F921E4870338F2B2C">Go to room specifications</a>
             </div>
-        </div>
+        </div> -->
         <div class="details lecture tw l" id="L206" >
             <div>
                 <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DXhPfSGwhGCd6eomy99iCgTdLundefined"></iframe> -->
@@ -360,9 +369,9 @@
                 <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=4711E6E1F10044959C1C3F6CAC4FCE50">Go to room specifications</a>
             </div>
         </div>
-        <div class="details lecture tw l" id="L209" >
+        <!-- <div class="details lecture tw l" id="L209" >
             <div>
-                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DoP1Be9DBAn-n_vA84B0nG8fCundefined"></iframe> -->
+                <!-- <iframe  width="400" height="267" allowfullscreen style="border-style:none;" src="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DoP1Be9DBAn-n_vA84B0nG8fCundefined"></iframe>
                 <object data="https://panoramas.usq.edu.au/viewer.html?config=/single%3Fid%3DoP1Be9DBAn-n_vA84B0nG8fCundefined" width="400" height="267" type=""></object>
                 <img src="360.png" alt="">
             </div>
@@ -378,7 +387,7 @@
                 <p>L209 is a 191 seat capacity teaching space.</p>
                 <br>
                 <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=F26C038053E34740B401361F148D6FDF">Go to room specifications</a>
-            </div>
+            </div> -->
         </div>
         <div class="details lecture spf l" id="A603" >
             <div>
@@ -485,8 +494,6 @@
                 <a target="_blank" href="https://usq.saasitau.com/Login.aspx?Scope=SelfService&Role=SelfService&CommandId=ShowKnowledgeArticle&ItemId=F3385F0434F54935A7CE96D0CC37571C">Go to room specifications</a>
             </div>
         </div>
-
-
 
 
 
