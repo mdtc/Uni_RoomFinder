@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  web:
+    image: shipyard.usq.edu.au/room-finder:latest
+    restart: unless-stopped
+    user: '1010'
+    ports:
+      - '3005:8080'
