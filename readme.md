@@ -1,13 +1,15 @@
 # Room Finder
 
-This application is used to find rooms XXXXXXXX. 
+This application is used to filter and find rooms according on their campus location, capacity, and room type. Admins can manage the rooms details as well as add or remove entries.
+
 ## Functional Overview
 
-The XXXXX process is responsible for XXXXXXXXXXX.  
+* The Database process is responsible for store the rooms details.
+* The PHP based system is responsible to retrieve, append or modified the rooms details.
 
 ## Technical Overview
 
-* The application is a HTML Page XXXXXXX
+* The application is a PHP 8.0.1 based system that connects to a SQlite database. IT uses HTML, CSS and Jquery 3.6.0 
 * To build and deploy this app we are using custom built docker image based on official bitnami/apache .
 * This is a self contained image (Project files are built within the image) No volumes Rquired .
    
