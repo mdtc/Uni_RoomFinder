@@ -1,9 +1,8 @@
-version: '2'
-
+version: "2"
 services:
-  web:
-    image: shipyard.usq.edu.au/room-finder:latest
-    restart: unless-stopped
-    user: '1010'
+  webserver:
+    image: php:8.1-apache
     ports:
-      - '3005:8080'
+      - "8181:80"
+    volumes:
+      - ./app:/var/www/html
