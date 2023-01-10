@@ -3,6 +3,6 @@ services:
   webserver:
     image: php:8.1-apache
     ports:
-      - "8181:80"
+      - "3005:80"
     volumes:
       - ./app:/var/www/html
