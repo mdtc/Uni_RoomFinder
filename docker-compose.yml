@@ -5,4 +5,4 @@ services:
     ports:
       - "3005:80"
     volumes:
-      - ./app:/var/www/html
+      - ${host_dir}:/var/www/html
