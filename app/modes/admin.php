@@ -31,7 +31,6 @@ require('../model/data_db.php');
 
 <?php 
 
-
 $validate = filter_input(INPUT_POST, 'validate');
 //$edit = filter_input(INPUT_POST, 'edit');
 if ($validate === NULL){
@@ -42,18 +41,49 @@ if ($validate === NULL){
 }
 
 if($validate == "login"){
-    //$rooms = get_rooms();
-    //var_dump($rooms);
     include('authenticate.php');
 } else if($validate == "validate"){
+    $username = filter_input(INPUT_POST, 'username');
     $access = filter_input(INPUT_POST, 'pass');
-    if($access == "ICTrocks!"){
+    $password_hash = pwd_hash($username);
+
+    if(password_verify($access, $password_hash)){
+        // "you are logged in";
         $rooms = get_rooms();
         include('adminList.php');
-    }else{
-        echo "Incorrect credentials";
-    }
-} else if($validate == "Delete"){
+    }else {
+        // "Incorrect login details"
+        echo 
+        '<script>
+            alert("Incorrect credentials, please verify and try again");
+            location="admin.php";
+        </script>';
+     };
+} else if ($validate == "register"){
+
+    $username = filter_input(INPUT_POST, 'username');
+    $pass = filter_input(INPUT_POST, 'pass');
+
+
+    echo $username;
+    //hashing($username, $pass);
+
+    // if($register){
+    //     echo 
+    //     '<script>
+    //         alert("User created successfully");
+    //         location="admin.php";
+    //     </script>';
+    // }else{
+    //     echo 
+    //     '<script>
+    //         alert("There was an issue, please try later");
+    //         location="admin.php";
+    //     </script>';
+    // }
+
+
+}else if($validate == "Delete"){
     $roomName = filter_input(INPUT_POST, 'roomName');
     $campus = filter_input(INPUT_POST, 'campus');
     //echo $roomName;

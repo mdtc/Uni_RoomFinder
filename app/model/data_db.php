@@ -199,6 +199,64 @@ $lightsRRR, $otherRRR){
 
 
 
+
+function pwd_hash($username){
+    try{
+        global $db;
+        $query = "SELECT password_hash FROM users WHERE username = :username";
+        $statement = $db->prepare($query);
+        $statement->bindValue(":username", $username);
+        if ($statement->execute()) {
+            $hash = $statement->fetch();
+            if ($hash) {
+                return $hash["password_hash"];
+            } 
+        } else {
+            echo "Error executing the query: " . print_r($statement->errorInfo(), true);
+        }
+    }catch (PDOException $e){
+        $error_message = $e->getMessage();
+        include('../errors/database_error.php');
+        exit();
+    }
+}
+
+
+
+function hashing($username, $pass){
+
+    $hashed = password_hash($pass, PASSWORD_DEFAULT);
+    try{
+        global $db;
+        $query = 'INSERT INTO users 
+                                (username, password_hash)
+                        VALUES
+                                (:username, :hash)';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':username', $username);
+        $statement->bindValue(':hash', $hashed);
+        if($statement->execute()){
+            echo 
+                '<script>
+                    alert("User created successfully");
+                    location="admin.php";
+                </script>';
+        }else{
+            echo 
+                '<script>
+                    alert("There was an issue, please try again");
+                    location="register.php";
+                </script>';
+        }
+    }catch (PDOException $e){
+        $error_message = $e->getMessage();
+        include('../errors/database_error.php');
+        exit();
+    }
+
+
+}
+
 function add_room($roomName, $campus, $capacity, $size, $roomType, $linkImage, $linkKA, $description,
 $furniture, $access, $hearing, $map, $phone, $docam, $screens, $PC, $mics, $cams, $click, $meeting,
 $avRRR, $micsRRR, $zoomRRR, $panoptoRRR, $podsRRR, $lapRRR, $techRRR, $roomsRRR, $barcoRRR, $lightsRRR, 

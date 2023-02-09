@@ -42,11 +42,7 @@
 
 <?php 
     $i=0;
-    foreach ($rooms as $room){ 
-        if ($i >=8){
-            break;
-        }
-        ?>
+    foreach ($rooms as $room){ ?>
 
     <div class="details">
         <div class="banner">

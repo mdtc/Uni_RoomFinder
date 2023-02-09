@@ -41,7 +41,7 @@ else if($action == "Search"){
     $campus = filter_input(INPUT_POST, 'Campus');
     $size = filter_input(INPUT_POST, 'Size');
     $rooms = search_rooms($campus, $size, $roomType);
-    include('modes/general.php');
+    include('modes/search.php');
 }else if($action == "Read full description"){
     $roomName = filter_input(INPUT_POST, 'roomName');
     $campus = filter_input(INPUT_POST, 'campus');
